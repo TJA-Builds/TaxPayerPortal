@@ -284,7 +284,6 @@ const BillSearch: React.FC = () => {
       parcelId: [],
       propertyAddress: [],
       invoiceNumber: [],
-      invoiceNumber: [],
       specialAssessment: []
     });
   };
