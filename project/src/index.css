@@ -1,0 +1,276 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for all elements */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Print styles */
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    background: white !important;
+    padding: 0.5in !important;
+    margin: 0 !important; 
+  }
+
+  /* Compact layout adjustments */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  table {
+    font-size: 7pt !important;
+    margin: 0 !important;
+  }
+
+  th, td {
+    padding: 1px 2px !important;
+  }
+
+  /* Make title more compact */
+  .flex.justify-between.items-center.mb-4 h1:before {
+    font-size: 10pt !important;
+    margin-bottom: 0.25in !important;
+  }
+
+  /* Reset all print-specific styles */
+  .print\:hidden,
+  header,
+  footer,
+  button:not(.bill-number),
+  select,
+  input[type="checkbox"] {
+    display: none !important;
+  }
+
+  /* Remove spacing compensation for fixed header/footer */
+  .pt-16,
+  .pb-16 {
+    padding: 0 !important;
+  }
+
+  /* Ensure main content starts at the top */
+  .min-h-\[calc\(100vh-8rem\)\] {
+    min-height: auto !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure bill number is visible */
+  .bill-number {
+    all: revert !important;
+    font-weight: inherit !important;
+    color: black !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: inherit !important;
+    font-size: 0.875rem !important;
+    text-decoration: none !important;
+    cursor: text !important;
+    pointer-events: none !important;
+    display: inline !important;
+  }
+
+  /* Adjust main content */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure table takes full width */
+  .overflow-x-auto {
+    overflow: visible !important;
+    width: auto !important;
+  }
+
+  /* Table styles */
+  table {
+    width: 100% !important;
+    font-size: 7pt !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+  }
+
+  th, td {
+    padding: 2px !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    text-align: left !important;
+    color: black !important;
+  }
+
+  /* Property address column */
+  td .min-w-\[140px\] {
+    min-width: 120px !important;
+  }
+
+  td .min-w-\[140px\] div {
+    font-size: 7pt !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Bill number column */
+  .bill-number {
+    font-size: 7pt !important;
+  }
+
+  tr {
+    page-break-inside: auto !important;
+  }
+
+  /* Add title at the top */
+  .min-h-\[calc\(100vh-8rem\)\] {
+    min-height: auto !important;
+  }
+
+  /* Clean up visual styles */
+  .shadow-md,
+  .rounded-lg {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Hide search and filter controls */
+  .bg-white.rounded-lg.shadow-md.p-4.mb-4,
+  .mb-3.flex.justify-between.items-center,
+  .mt-4.flex.justify-end {
+    display: none !important;
+  }
+
+  /* Add page title */
+  .flex.justify-between.items-center.mb-4 h1:before {
+    content: "Tax Bill Report - Generated on " attr(data-date) " at " attr(data-time) !important;
+    display: block !important;
+    font-size: 10pt !important;
+    margin: 0 0 0.1in 0 !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Print styles for bill detail */
+@media print {
+  /* Hide navigation and action buttons */
+  .no-print,
+  button:not(.bill-number) {
+    display: none !important;
+  }
+  
+  /* Reset page margins */
+  @page {
+    margin: 0.5in;
+  }
+  
+  /* General print styles */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 10pt !important;
+  }
+  
+  /* Header styles */
+  h1 {
+    font-size: 12pt !important;
+    margin: 0 0 0.1in 0 !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 10pt !important;
+    margin: 0.1in 0 0.05in !important;
+    page-break-after: avoid !important;
+  }
+  
+  /* Table styles */
+  table {
+    font-size: 8pt !important;
+    border-collapse: collapse !important;
+    page-break-inside: avoid !important;
+    margin: 0.1in 0 0.15in !important;
+  }
+  
+  th {
+    background-color: #f3f4f6 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    padding: 0.05in !important;
+    font-size: 8pt !important;
+  }
+  
+  td {
+    padding: 0.05in !important;
+    border-top: 1px solid #e5e7eb !important;
+    font-size: 8pt !important;
+  }
+  
+  /* Grid layout adjustments */
+  .grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.15in !important;
+    page-break-inside: avoid !important;
+  }
+  
+  /* Remove visual decorations */
+  .shadow-md,
+  .rounded-lg {
+    box-shadow: none !important;
+    border-radius: 0 !important;
+  }
+  
+  /* Add print header */
+  .min-h-\[calc\(100vh-8rem\)\] {
+    min-height: auto !important;
+  }
+  
+  /* Ensure proper page breaks */
+  .bg-white {
+    background: none !important;
+    padding: 0 !important;
+  }
+  
+  /* Format amounts */
+  .text-red-600 {
+    color: black !important;
+    font-weight: bold !important;
+  }
+
+  /* Hide back button and action buttons */
+  .flex.items-baseline.gap-3.mb-3 button,
+  .mt-1.space-x-1 {
+    display: none !important;
+  }
+
+  /* Adjust spacing for print */
+  .p-6 {
+    padding: 0 !important;
+  }
+
+  /* Ensure content fits well on paper */
+  .grid.grid-cols-1.md\:grid-cols-2.gap-6 {
+    gap: 0.3in !important;
+  }
+
+  /* Add page breaks before major sections */
+  .grid.grid-cols-1.md\:grid-cols-2.gap-6.mt-6 {
+    page-break-before: always !important;
+  }
+}
